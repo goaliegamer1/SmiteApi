@@ -50,7 +50,16 @@ router.post('/:ID', (req, res, next) => {
     .exec()
     .then(result => {
         console.log(result);
-        res.status(200).json(result);
+        AppState.findById(id)
+        .exec()
+        .then(doc => {
+            console.log(doc);
+            res.status(200).json(doc);
+        })
+        .catch(err => {
+            console.log(err)
+            res.status(500).json({error: err});
+        });
     })
     .catch(err => {
         console.log(err);
