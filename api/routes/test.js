@@ -54,7 +54,6 @@ router.post('/:ID', (req, res, next) => {
         .exec()
         .then(doc => {
             console.log(doc);
-            res.headers['Access-Control-Allow-Origin'] = 'Itch.io'
             res.status(200).json(doc);
         })
         .catch(err => {
